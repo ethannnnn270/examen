@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hellfire Guitars | Tienda de Rock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&family=Russo+One&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS CSS --- */
+        :root {
+            --bg-dark: #121212;
+            --rock-red: #de1b1b;
+            --rock-orange: #ff6a00;
+            --text-light: #f5f5f5;
+            --amplifier-metal: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Russo One', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            background-image: radial-gradient(circle, #241414 0%, #0a0a0a 100%);
+            overflow-x: hidden;
+        }
+
+        /* --- ENCABEZADO Y NAVEGACIÓN --- */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-bottom: 4px solid var(--rock-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(222, 27, 27, 0.3);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 3px 3px 0px var(--rock-red);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            font-family: 'Rock Salt', cursive;
+            color: var(--rock-orange);
+            font-size: 1.2rem;
+            display: block;
+            text-shadow: none;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--rock-red);
+            text-shadow: 0 0 8px var(--rock-red);
+        }
+
+        /* --- HERO / BIENVENIDA --- */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=1200') no-repeat center/cover;
+            border-bottom: 2px dashed var(--rock-orange);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 20px var(--rock-red);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #bbb;
+        }
+
+        /* --- SECCIÓN SUCURSAL --- */
+        .branch-box {
+            background-color: var(--amplifier-metal);
+            border: 3px solid #333;
+            border-left: 8px solid var(--rock-orange);
+            border-radius: 6px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 30px auto 0 auto;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        .branch-box h3 {
+            color: var(--rock-orange);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- CATÁLOGO DINÁMICO --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 2px 2px var(--rock-red);
+            letter-spacing: 2px;
+        }
+
+        .guitar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .guitar-card {
+            background: #1c1c1c;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .guitar-card:hover {
+            transform: scale(1.03);
+            border-color: var(--rock-red);
+            box-shadow: 0 0 15px rgba(222, 27, 27, 0.4);
+        }
+
+        .guitar-card h3 {
+            margin: 15px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .price {
+            color: var(--rock-orange);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- BOTÓN ROCKERO --- */
+        .rock-btn {
+            background: linear-gradient(135deg, var(--rock-red) 0%, #8a0c0c 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 3px 3px 0px #000;
+            transition: 0.2s;
+        }
+
+        .rock-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #000;
+            background: linear-gradient(135deg, #ff2e2e 0%, var(--rock-red) 100%);
+        }
+
+        .rock-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contact-section {
+            background: #181818;
+            border-top: 4px solid var(--rock-orange);
+            padding: 60px 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: #0f0f0f;
+            border: 2px solid #333;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rock-red);
+            box-shadow: 0 0 8px rgba(222, 27, 27, 0.5);
+        }
+
+        /* --- SECCIÓN UBICACIÓN --- */
+        .location-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .mock-map {
+            max-width: 700px;
+            height: 350px;
+            margin: 30px auto 0 auto;
+            background: repeating-linear-gradient(45deg, #222, #222 10px, #2a2a2a 10px, #2a2a2a 20px);
+            border: 4px solid var(--amplifier-metal);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .map-pin {
+            font-size: 3rem;
+            color: var(--rock-red);
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        /* --- POPUP DE INTERACCIÓN (SISTEMA ALERTA) --- */
+        .rock-alert {
+            position: fixed;
+            bottom: -100px;
+            right: 20px;
+            background: #000;
+            border: 2px solid var(--rock-red);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(222, 27, 27, 0.6);
+            transition: 0.5s ease-in-out;
+            z-index: 9999;
+        }
+
+        .rock-alert.active {
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">HELLFIRE <span>Guitars</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Modelos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>¡Rompe el Silencio!</h1>
+        <p>Guitarras diseñadas para hacer temblar el escenario. No vendemos instrumentos, vendemos poder absoluto.</p>
+        
+        <div class="branch-box">
+            <h3>NUEVO SUCURSAL: The Garage Stage</h3>
+            <p style="color: #ccc; font-size: 0.95rem;">Visita nuestro nuevo sub-almacén subterráneo equipado con amplificadores listos para que pruebes tu distorsión al máximo volumen.</p>
+        </div>
+    </section>
+
+    <section id="catalogo" class="container">
+        <h2 class="section-title">Nuestras Armas de Destrucción</h2>
+        <div class="guitar-grid" id="guitar-container">
+            </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <h2 class="section-title">Únete al Club del Ruido</h2>
+        <form class="contact-form" id="formRockero">
+            <div class="form-group">
+                <input type="text" id="nombreCompleto" placeholder="TU NOMBRE ROCKERO" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="TU CORREO ELECTRÓNICO" required>
+            </div>
+            <div class="form-group">
+                <textarea rows="5" placeholder="CUÉNTANOS QUÉ MODELO QUIERES MANDAR A PERSONALIZAR..." required></textarea>
+            </div>
+            <button type="submit" class="rock-btn">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <section id="ubicacion" class="location-section container">
+        <h2 class="section-title">¿Dónde Encontrarnos?</h2>
+        <p>Avenida del Rock N' Roll #666, Frente al Estadio Central.</p>
+        
+        <div class="mock-map">
+            <div class="map-pin">🤘</div>
+            <h3 style="color: var(--rock-orange); margin-top: 10px;">¡ZONA DE ALTO VOLUMEN DETECTADA!</h3>
+            <p style="font-size: 0.85rem; color: #888;">Estacionamiento exclusivo para motocicletas y furgonetas de bandas musicales.</p>
+        </div>
+    </section>
+
+    <div class="rock-alert" id="alertaFlotante">
+        <h4 style="color: var(--rock-orange);">🤘 ¡CONEXIÓN ESTABLECIDA!</h4>
+        <p id="textoAlerta" style="font-size: 0.9rem; margin-top: 5px;"></p>
+    </div>
+
+    <script>
+        // 1. Base de datos simulada de guitarras
+        const catalogoGuitarras = [
+            { id: 1, modelo: "V-Crimson Custom", precio: "$899.00", estilo: "Pastillas activas de alta ganancia. Ideal para Metal extremo." },
+            { id: 2, modelo: "Dark Stratocaster '74", precio: "$1,250.00", estilo: "Cuerpo de fresno quemado. Un sonido clásico con esteroides." },
+            { id: 3, modelo: "Hellraiser Bass IV", precio: "$750.00", estilo: "Graves tan pesados que harán temblar los cimientos." }
+        ];
+
+        const contenedorGuitarras = document.getElementById('guitar-container');
+        const widgetAlerta = document.getElementById('alertaFlotante');
+        const txtAlerta = document.getElementById('textoAlerta');
+
+        // 2. Renderizar dinámicamente las tarjetas de las guitarras en el HTML
+        function cargarGuitarras() {
+            contenedorGuitarras.innerHTML = catalogoGuitarras.map(guitarra => `
+                <div class="guitar-card">
+                    <span style="font-size: 2.5rem;">🎸</span>
+                    <h3>${guitarra.modelo}</h3>
+                    <p style="font-size: 0.9rem; color: #999; margin: 10px 0 15px 0; min-height: 40px;">${guitarra.estilo}</p>
+                    <div class="price">${guitarra.precio}</div>
+                    <button class="rock-btn" onclick="probarGuitarra('${guitarra.modelo}')">Probar Modelo</button>
+                </div>
+            `).join('');
+        }
+
+        // 3. Función interactiva de JS: Mostrar alerta dinámica al simular la prueba de una guitarra
+        function probarGuitarra(nombreModelo) {
+            txtAlerta.innerText = `Has reservado una sesión en 'The Garage Stage' para probar la espectacular ${nombreModelo}. ¡Trae tus púas!`;
+            widgetAlerta.classList.add('active');
+            
+            // Ocultar la notificación automáticamente a los 5 segundos
+            setTimeout(() => {
+                widgetAlerta.classList.remove('active');
+            }, 5000);
+        }
+
+        // 4. Manejo dinámico del envío del formulario de contacto
+        document.getElementById('formRockero').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que la página se reinicie
+            
+            const nombre = document.getElementById('nombreCompleto').value;
+            
+            txtAlerta.innerText = `¡Hey ${nombre}! Tu mensaje ha cruzado la red. El equipo de Hellfire se pondrá en contacto contigo pronto.`;
+            widgetAlerta.classList.add('active');
+            
+            setTimeout(() => {
+                widgetAlerta.classList.remove('active');
+            }, 5000);
+
+            this.reset(); // Limpia los campos del formulario
+        });
+
+        // Ejecutar la inyección dinámica al cargar la página
+        window.onload = cargarGuitarras;
+    </script>
+</body>
+</html>
